@@ -28,20 +28,20 @@
         </div>
     </div>
 
-    <form action="">
+    <form id="noteForm">
         <div class="form-group">
             <label for="noteTitle" class="form-label">Title</label>
             <input type="text" id="noteTitle" class="form-input" placeholder="Ingresa un titulo" required>
         </div>
 
         <div class="form-group">
-            <label for="noteContent" class="form label">Contenido</label>
+            <label for="noteContent" class="form-label">Contenido</label>
             <textarea name="" id="noteContent" class="form-textarea" placeholder="Escribe tu nota" required></textarea>
         </div>
 
         <div class="dialog-actions">
             <button type="button" class="cancel-btn" onclick="closeNoteDialog()">Cancel</button>
-            <button type="submit" class="save-btn"></button>
+            <button type="submit" class="save-btn">Guardar</button>
         </div>
     </form>
 </dialog>
