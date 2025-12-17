@@ -1,0 +1,327 @@
+:root {
+    --clr-primary: #6c63ff;
+    --clr-primary-hover: #524be3;
+    --clr-bg: #f4f7f6;
+    --clr-card-bg: #ffffff;
+    --clr-text: #2c3e50;
+    --clr-text-secondary: #7f8c8d;
+    --clr-shadow: rgba(0, 0, 0, 0.1);
+    --clr-border: #ecf0f1;
+
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --border-radius-sm: 8px;
+    --border-radius-lg: 12px;
+    --transition-duration: 0.3s;
+}
+
+body.dark-mode {
+    --clr-primary: #8a7aff;
+    --clr-primary-hover: #a192ff;
+    --clr-bg: #2c3e50;
+    --clr-card-bg: #34495e;
+    --clr-text: #ecf0f1;
+    --clr-text-secondary: #bdc3c7;
+    --clr-shadow: rgba(0, 0, 0, 0.5);
+    --clr-border: #4a637d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
+    line-height: 1.6;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: var(--clr-card-bg);
+    border-bottom: 1px solid var(--clr-border);
+    box-shadow: 0 2px 4px var(--clr-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--clr-primary);
+}
+
+header > div {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    transition: background-color var(--transition-duration), transform 0.1s;
+}
+
+.add-note-btn {
+    background-color: var(--clr-primary);
+    color: white;
+}
+
+.add-note-btn:hover {
+    background-color: var(--clr-primary-hover);
+    transform: translateY(-2px);
+}
+
+.add-note-btn:active {
+    transform: translateY(0);
+}
+
+.theme-toggle-btn {
+    background: var(--clr-border);
+    color: var(--clr-text);
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.theme-toggle-btn:hover {
+    background-color: var(--clr-text-secondary);
+}
+
+#notesContainer {
+    padding: 40px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.note-card {
+    background-color: var(--clr-card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: 20px;
+    box-shadow: 0 4px 12px var(--clr-shadow);
+    transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    border-left: 5px solid var(--clr-primary);
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--clr-shadow);
+}
+
+.note-card-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--clr-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.note-card-content {
+    font-size: 1em;
+    color: var(--clr-text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.note-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.edit-btn, .delete-btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    flex-grow: 1;
+}
+
+.edit-btn {
+    background-color: var(--clr-primary);
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: var(--clr-primary-hover);
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+dialog {
+    padding: 0;
+    border: none;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    background-color: var(--clr-card-bg);
+    color: var(--clr-text);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.dialog-content {
+    padding: 25px;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--clr-border);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.dialog-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--clr-primary);
+}
+
+.close-btn {
+    background: none;
+    color: var(--clr-text-secondary);
+    font-size: 1.2em;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.close-btn:hover {
+    background-color: var(--clr-border);
+    color: var(--clr-text);
+}
+
+dialog form {
+    padding: 0 25px 25px 25px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--clr-text);
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--border-radius-sm);
+    font-size: 1em;
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
+    transition: border-color var(--transition-duration), box-shadow var(--transition-duration);
+}
+
+.form-input:focus, .form-textarea:focus {
+    border-color: var(--clr-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--clr-border);
+    margin-top: 20px;
+}
+
+.save-btn {
+    background-color: var(--clr-primary);
+    color: white;
+    font-weight: 600;
+    padding: 10px 25px;
+}
+
+.save-btn:hover {
+    background-color: var(--clr-primary-hover);
+}
+
+.cancel-btn {
+    background-color: var(--clr-text-secondary);
+    color: white;
+    font-weight: 600;
+    padding: 10px 25px;
+}
+
+.cancel-btn:hover {
+    background-color: #6c7a89;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+        gap: 10px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    header > div {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .add-note-btn {
+        flex-grow: 1;
+    }
+
+    #notesContainer {
+        padding: 20px;
+        grid-template-columns: 1fr; 
+    }
+}

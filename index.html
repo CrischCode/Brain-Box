@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.s.css">
+    <script src="script.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Brain Box</h1>
+        <div>
+            <button class="add-note-btn" onclick="openNoteDialog()">+ Add Note</button>
+            <button id="themeToggleBtn" class="theme-toggle-btn">🌙</button>
+        </div>
+    </header>
+
+    <main id="notesContainer" class="notes-grid">
+
+    </main>
+
+<dialog id="noteDialog" class="">
+    <div class="dialog-content">
+        <div class="dialog-header">
+            <div class="dialog-title" id="dialogTitle">Add New Note</div>
+            <button class="close-btn" onclick="closeNoteDialog()">X</button>
+        </div>
+    </div>
+
+    <form action="">
+        <div class="form-group">
+            <label for="noteTitle" class="form-label">Title</label>
+            <input type="text" id="noteTitle" class="form-input" placeholder="Ingresa un titulo" required>
+        </div>
+
+        <div class="form-group">
+            <label for="noteContent" class="form label">Contenido</label>
+            <textarea name="" id="noteContent" class="form-textarea" placeholder="Escribe tu nota" required></textarea>
+        </div>
+
+        <div class="dialog-actions">
+            <button type="button" class="cancel-btn" onclick="closeNoteDialog()">Cancel</button>
+            <button type="submit" class="save-btn"></button>
+        </div>
+    </form>
+</dialog>
+    
+</body>
+</html>
