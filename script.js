@@ -1,4 +1,5 @@
 let notes = []
+let editingNoteId = null //variable para editar la nota
 
 function loadNotes() {
     const saveNotes = localStorage.getItem('quickNotes')
@@ -12,15 +13,27 @@ function saveNote(event) {
     const title = document.getElementById('noteTitle').value.trim()
     const content = document.getElementById('noteContent').value.trim()
 
-    notes.unshift({
+    if(editingNoteId) { // para no sosbre escribir las notas editadas
+        
+        const noteIndex = notes.findIndex(note => note.id === editingNoteId)
+        notes[noteIndex] = {
+            ...notes[noteIndex],
+            title: title,
+            content: content
+        }
+
+    } else {
+        notes.unshift({
         id: generateId(),
         title: title,
         content: content
     })
+    }
 
     saveNotes()
     renderNotes()
     closeNoteDialog()
+    editingNoteId = null
 }
 
 //Eliminar nota
@@ -69,9 +82,28 @@ function saveNotes() {
 }
 
 // abrir y cerrar el dialogo
-function openNoteDialog() {
+function openNoteDialog(noteId = null) {
     const dialog = document.getElementById('noteDialog')
+    const titleInput = document.getElementById('noteTitle')
+    const contentInput = document.getElementById('noteContent')
     dialog.showModal()
+
+    if(noteId) { // para editar una nota
+        const noteToEdit = notes.find(note => note.id === noteId)
+        if(!noteToEdit) return
+        
+        editingNoteId = noteId
+        document.getElementById('dialogTitle').textContent = 'Editar Nota'
+        titleInput.value = noteToEdit.title
+        contentInput.value = noteToEdit.content
+    }
+
+    else {
+        editingNoteId = null
+        document.getElementById('dialogTitle').textContent = 'Agregar Nueva Nota'
+        titleInput.value = ''
+        contentInput.value = ''
+    }
 }
 
 function closeNoteDialog() {
