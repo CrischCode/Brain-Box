@@ -49,9 +49,9 @@ function renderNotes() {
     if (notes.length === 0) {
         notesContainer.innerHTML = `
         <div class="empty-state">
-            <h2>No notes yet</h2>
+            <h2>No hay notas todavia</h2>
             <p>Crea tu primera nota</p>
-            <button class="add-note-btn" onclick="openNoteDialog()">+ Add First Note</button>
+            <button class="add-note-btn" onclick="openNoteDialog()">+ Agrega tu primera nota</button>
         </div>
         `
         return
@@ -91,7 +91,7 @@ function openNoteDialog(noteId = null) {
     if(noteId) { // para editar una nota
         const noteToEdit = notes.find(note => note.id === noteId)
         if(!noteToEdit) return
-        
+
         editingNoteId = noteId
         document.getElementById('dialogTitle').textContent = 'Editar Nota'
         titleInput.value = noteToEdit.title
