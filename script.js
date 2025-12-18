@@ -106,13 +106,31 @@ function openNoteDialog(noteId = null) {
     }
 }
 
+//Tema oscuro
+function toggleTheme() {
+    const isDark=document.body.classList.toggle('dark-theme')
+    localStorage.setItem('theme', isDark ? 'dark': 'light')
+    document.getElementById('themeToggleBtn').textContent = isDark ? '☀️' : '🌙'
+}
+
+//Tema oscuro
+function applyStoredTheme() {
+    if(localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-theme')
+        document.getElementById('themeToggleBtn').textContent = '☀️'
+    }
+}
+
 function closeNoteDialog() {
     document.getElementById('noteDialog').close()
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    applyStoredTheme()
     notes = loadNotes()
     renderNotes()
+
+    document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme)
 
     const form = document.getElementById('noteForm')
     if (form) {

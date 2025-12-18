@@ -19,7 +19,7 @@
     --transition-duration: 0.25s;
 }
 
-body.dark-mode {
+body.dark-theme {
     --clr-primary: #818cf8;
     --clr-primary-hover: #6366f1;
 
