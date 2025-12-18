@@ -11,7 +11,7 @@
     <header>
         <h1>Brain Box</h1>
         <div>
-            <button class="add-note-btn" onclick="openNoteDialog()">+ Add Note</button>
+            <button class="add-note-btn" onclick="openNoteDialog()">+ Agregar Nota</button>
             <button id="themeToggleBtn" class="theme-toggle-btn">🌙</button>
         </div>
     </header>
@@ -23,14 +23,14 @@
 <dialog id="noteDialog" class="">
     <div class="dialog-content">
         <div class="dialog-header">
-            <div class="dialog-title" id="dialogTitle">Add New Note</div>
+            <div class="dialog-title" id="dialogTitle">Agrega una nueva nota</div>
             <button class="close-btn" onclick="closeNoteDialog()">X</button>
         </div>
     </div>
 
     <form id="noteForm">
         <div class="form-group">
-            <label for="noteTitle" class="form-label">Title</label>
+            <label for="noteTitle" class="form-label">Titulo</label>
             <input type="text" id="noteTitle" class="form-input" placeholder="Ingresa un titulo" required>
         </div>
 
@@ -40,7 +40,7 @@
         </div>
 
         <div class="dialog-actions">
-            <button type="button" class="cancel-btn" onclick="closeNoteDialog()">Cancel</button>
+            <button type="button" class="cancel-btn" onclick="closeNoteDialog()">Cancelar</button>
             <button type="submit" class="save-btn">Guardar</button>
         </div>
     </form>
